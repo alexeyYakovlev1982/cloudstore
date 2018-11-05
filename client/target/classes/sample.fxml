@@ -1,0 +1,42 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.text.Text?>
+<VBox fx:controller="com.alexeyy.cloudstore.client.Controller"
+      xmlns:fx="http://javafx.com/fxml" alignment="center">
+    <HBox>
+        <TextField fx:id="loginTF" HBox.hgrow="ALWAYS" promptText="Enter login..." text="123"/>
+        <TextField fx:id="passwordTF" HBox.hgrow="ALWAYS" promptText="Enter password..." text="456"/>
+        <Button fx:id="loginBtn" text="Login" onAction="#refreshBtnReaction" minWidth="80"/>
+    </HBox>
+    <HBox>
+        <!--<TextArea fx:id="serverTextArea" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" editable="false"
+                  text="Login or Refresh to have a list of files here..."/> -->
+        <VBox HBox.hgrow="ALWAYS">
+            <Text fx:id="serverText" text="Server Files List: (perform login to get the list)" HBox.hgrow="ALWAYS"/>
+            <ListView fx:id="serverLV" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" editable="false" onMouseClicked="#serverLVClicked"
+                      accessibleText="Login or Refresh to het list of files"/>
+        </VBox>
+        <VBox minWidth="80" maxWidth="80">
+            <Button fx:id="refreshBtn" text="Refresh" onAction="#refreshBtnReaction" minWidth="80" disable="true"/>
+            <Button fx:id="deleteBtn" text="Delete" minWidth="80" disable="true" onAction="#deleteBtnReaction"/>
+            <Button fx:id="deleteAllBtn" text="DeleteAll" onAction="#deleteAllBtnReaction" minWidth="80" disable="true"/>
+            <Button fx:id="downloadBtn" text="Download" minWidth="80" disable="true" onAction="#downloadBtnReaction"/>
+        </VBox>
+    </HBox>
+    <HBox>
+        <Button fx:id="chooseFileBtn" text="Choose File" onAction="#chooseFileBtnClickReaction" minWidth="80"/>
+        <TextField fx:id="chosenFileTF" onAction="#sendFileBtnClickReaction" HBox.hgrow="ALWAYS"
+                   promptText="file to send..." text="C:\testsmall.txt"/>
+        <Button fx:id="sendFileBtn" text="Upload file" onAction="#sendFileBtnClickReaction" minWidth="80" disable="true"/>
+    </HBox>
+    <TextArea fx:id="clientTextArea" VBox.vgrow="ALWAYS" editable="false" text="Client logs: "/>
+</VBox>
